@@ -1,0 +1,75 @@
+Posts:
+  - createPost: # post
+      /api/post/{text, publication_date} # it's body
+  - createPosts: # post
+      /api/post/[{text, publication_date}, ...] # it's body
+  - getPostById: # get
+      /api/post/postId # it's params
+  - getPosts: # get
+      /api/post/
+  # - updatePost
+  - deletePost: #delete
+      /api/post/postId # it's params
+
+  - createPostMarks: # post
+      /api/postMark/{userId, postId, isToxic, isToxicSexist, isToxicToPerson,
+      isToxicToGroup, isNegative, isPositive, isNeural, skip} # it's body
+  - getAllPostMarks: # get
+      /api/postMark/
+
+  - getAllPostsByMessageTopicId: #get
+      /api/postMessageTopics/messageTopicId # it's params
+
+Comments:
+  - createComment: # post
+      /api/comment/{text, publication_date, postId}
+  - createComments: # post
+      /api/comment/[{text, publication_date, postId}, ...]
+  - getCommentById: # get
+      /api/comment/{commentId}
+  - getComments: # get
+      /api/comment/
+  # - updateComment
+  - deleteComment: # delete
+      /api/comment/commentId # it's params
+
+  - createCommentMarks: # post
+      /api/commentMark/{userId, postId, isToxic, isToxicSexist, isToxicToPerson,
+      isToxicToGroup, isNegative, isPositive, isNeural, skip} # it's body
+  - getAllCommentMarks: # get
+      /api/commentMark/
+
+Pictures:
+  - createPicture: # post
+      /api/picture/{text, publication_date, url, commentId, postId}
+  - createPictures: # post
+      /api/picture/[{text, publication_date, url, commentId, postId}, ...]
+  - getPictureById: # get
+      /api/picture/{pictureId}
+  - getPictures: # get
+      /api/picture/
+  # - updatePicture
+  - deletePicture: # delete
+      /api/picture/pictureId # it's params
+
+  - createPictureMarks: # post
+      /api/pictureMark/{userId, postId, isToxic, isToxicSexist, isToxicToPerson,
+      isToxicToGroup, isNegative, isPositive, isNeural, skip} # it's body
+  - getAllPictureMarks: # get
+      /api/pictureMark/
+
+Users:
+  - getUserById:
+      /api/user/userId # it's params, I need to know the role of user
+  - updateUserByID: #put
+      /api/user/userId
+  - createUser: #create
+      /api/user/
+
+MessageTopics:
+  getAllTopics:
+    /api/messageTopics
+
+DatasetQualityCheck:
+  - checkQuality:
+  - boostQuality:
