@@ -2,7 +2,7 @@ import React from "react";
 import {Route, Routes} from "react-router-dom";
 import {privateRoutes, publicRoutes} from "./Routes";
 import ProtectedRoutes from "./ProtectedRoutes";
-import MainPage from "../../pages/MainPage";
+import NotFoundPage from "../../pages/NotFoundPage";
 
 const AppRouter: React.FunctionComponent = () => {
 
@@ -21,7 +21,7 @@ const AppRouter: React.FunctionComponent = () => {
                         )
                     }
                 </Route>
-                <Route path="*" element={<MainPage/>} />
+                <Route path="*" element={<NotFoundPage/>} />
             </Route>
         </Routes>
     );

@@ -1,14 +1,13 @@
 import React from 'react';
 import {BrowserRouter} from "react-router-dom";
 import AppRouter from "./components/app-router";
-import Sidebar from "./components/Sidebar";
 import Layout from "./components/Layout";
+import {initializeApp} from "firebase/app";
+import {firebaseConfig} from "./services/firebase";
 
-export interface IAppProps {
+initializeApp(firebaseConfig);
 
-}
-
-const App: React.FC<IAppProps> = (props) => {
+const App: React.FC = (props) => {
     return(
         <BrowserRouter>
             <Layout>
