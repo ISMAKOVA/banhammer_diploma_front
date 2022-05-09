@@ -39,6 +39,9 @@ Comments:
   - getAllCommentMarks: # get
       /api/commentMark/
 
+  - getAllCommentsByMessageTopicId: #get
+      /api/commentMessageTopics/messageTopicId # it's params
+
 Pictures:
   - createPicture: # post
       /api/picture/{text, publication_date, url, commentId, postId}
