@@ -1,47 +1,114 @@
 import * as React from 'react';
+import Radiobutton from "../Radiobutton";
+import {MessageTypes} from "../../../utils/enums";
 
 export interface ICard {
-    type: 'comment' | 'picture' | 'post'
-    title: string
+    type?: MessageTypes
+    title?: string
     picture?: string
     onclick?: void
+    text?: string
 }
 
 const Card: React.FC<ICard> = (props) => {
-    const {picture, title} = props;
+    const {type, picture, title, text} = props;
+    const is_toxic_sexist = "is_toxic_sexist";
+    const is_toxic_to_group = "is_toxic_to_group";
+    const marks = [
+        {
+            group: "is_toxic",
+            label: "Токсично",
+            value: 1,
+        },
+        {
+            group: "is_toxic",
+            label: "Нетоксично",
+            value: 0,
+        },
+        {
+            group: "is_toxic_sexist",
+            value: 1,
+            label: "Токсично (пол)",
+        },
+        {
+            group: "is_toxic_sexist",
+            value: 0,
+            label: "Нетоксично (пол)",
+        },
+        {
+            group: "is_toxic_to_person",
+            value: 1,
+            label: "Токсично (личность)",
+        },
+        {
+            group: "is_toxic_to_person",
+            value: 0,
+            label: "Нетоксично (личность)",
+        },
+        {
+            group: "is_toxic_to_group",
+            value: 1,
+            label: "Токсично (группа)",
+        },
+        {
+            group: "is_toxic_to_group",
+            value: 0,
+            label: "Нетоксично (группа)",
+        },
+        {
+            group: "coloring",
+            value: -1,
+            label: "Негативно",
+        },
+        {
+            group: "coloring",
+            value: 1,
+            label: "Позитивно",
+        },
+        {
+            group: "coloring",
+            value: 0,
+            label: "Нейтрально",
+        },
+    ]
 
-    const createRadioButton = (id: string, label: string, name: string, checked = false, disabled = false) => {
-        return <div className="form-check">
-            <input
-                disabled={disabled}
-                checked={checked}
-                className="form-check-input appearance-none rounded-full h-4 w-4 border
-                                                border-gray-300 bg-white checked:bg-blue-700 checked:border-blue-700
-                                                focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat
-                                                bg-center bg-contain float-left mr-2 cursor-pointer"
-                type="radio" name={name} id={id}/>
-            <label className="form-check-label inline-block text-slate-700"
-                   htmlFor={id}>
-                {label}
-            </label>
-        </div>
+    const getTitle = (type: MessageTypes | undefined) => {
+        if (!type) return;
+        switch (type) {
+            case MessageTypes.comment:
+                return "следующему комментарию";
+            case MessageTypes.post:
+                return "следующему посту";
+            case MessageTypes.picture:
+                return "следующей картинке";
+        }
     }
 
     return (
-        <div className="card w-80 h-[32rem] p-6 space-y-4 card-mark m-4">
-            <img className="w-full h-64 rounded-md transition hover:bg-cyan-300"
-                 src={picture}
-                 alt=""/>
-            <div id="description" className="space-y-4">
-                <h2 className="text-slate-600 font-semibold text-xl transition hover:text-cyan-300">
-                    {title}
-                </h2>
-                <div className="flex flex-col text-base space-y-2.5">
-                    {createRadioButton("0", "Токсично", "radio1", true)}
-                    {createRadioButton("1", "Нетоксично", "radio1", false)}
+        <div className={"card h-auto p-6 space-y-4 card-mark m-4 " + (type === MessageTypes.post ? "w-[50rem]" : "w-80")}>
+            <h2 className="text-slate-700 font-semibold text-xl transition hover:text-cyan-300">
+                Поставте отметку {getTitle(type)}
+            </h2>
+            <div className={"flex " + (type === MessageTypes.post ? "flex-row space-x-4" : "flex-col space-y-4")}>
+                {type !== MessageTypes.comment ?
+                    <img className="h-auto max-h-80 rounded-md transition"
+                         src={picture}
+                         alt=""/>
+                    : null
+                }
 
-                    {createRadioButton("0", "Токсичный для личности", "radio2", true)}
-                    {createRadioButton("1", "Нетоксичный для личности", "radio2", false)}
+                <div className="flex flex-col flex-nowrap space-y-2">
+                    <p className="text-left text-base pb-2">
+                        {type !== MessageTypes.picture ? text : null}
+                    </p>
+                    <div className="text-base">
+                        {
+                            marks.filter(mark => mark.group !== is_toxic_to_group && mark.group !== is_toxic_sexist)
+                                .map((mark, i) =>
+                                    <Radiobutton id={i.toString()} label={mark.label} name={mark.group}/>
+                                )
+                        }
+                    </div>
                 </div>
             </div>
         </div>

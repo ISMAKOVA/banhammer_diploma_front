@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import Card from "../components/shared/Card/Card";
 import Dropdown from "../components/shared/Dropdown/Dropdown";
+import Card from "../components/shared/Card";
+import {MessageTypes} from "../utils/enums";
 
 export interface IMarkPageProps {
-    type?: "post" | "comment" | "picture"
+    type?: MessageTypes
 }
 
 const MarkPage: React.FunctionComponent<IMarkPageProps> = (props) => {
@@ -39,7 +40,14 @@ const MarkPage: React.FunctionComponent<IMarkPageProps> = (props) => {
 
                 </div>
                 <div className="flex flex-row flex-wrap">
-                    {cards.map(c=> <Card type="picture" title={c} picture={"/images/bg-image-2.png"}/>)}
+                    {cards.map(c =>
+                        <Card
+                        title={type}
+                        type={type}
+                        picture={require("../assets/pic.png")}
+                        text={"So I started to walk into the water. I won't lie to you boys, I was terrified. But I pressed on, and as I made my way past the breakers a strange calm came over me. I don't know if it was divine intervention or the kinship of all living things but I tell you Jerry at that moment, I was a marine biologist."}
+                        />
+                    )}
                 </div>
             </div>
 

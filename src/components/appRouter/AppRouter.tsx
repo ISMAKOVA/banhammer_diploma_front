@@ -7,6 +7,7 @@ import UnauthorisedPage from "../../pages/UnauthorisedPage";
 import LoginPage from "../../pages/LoginPage";
 import React, {useEffect, useState} from "react";
 import {getAuth, onAuthStateChanged} from "firebase/auth";
+import {MessageTypes} from "../../utils/enums";
 
 const routes = (isLoggedIn: boolean) => [
     {
@@ -17,24 +18,24 @@ const routes = (isLoggedIn: boolean) => [
                 path: 'post',
                 element: <Outlet />,
                 children: [
-                    { path: 'view', element: <ViewPage type={"post"} /> },
-                    { path: 'mark', element: <MarkPage type={"post"} /> },
+                    { path: 'view', element: <ViewPage type={MessageTypes.post} /> },
+                    { path: 'mark', element: <MarkPage type={MessageTypes.post} /> },
                 ],
             },
             {
                 path: 'comment',
                 element: <Outlet />,
                 children: [
-                    { path: 'view', element: <ViewPage type={"post"} /> },
-                    { path: 'mark', element: <MarkPage type={"post"} /> },
+                    { path: 'view', element: <ViewPage type={MessageTypes.comment} /> },
+                    { path: 'mark', element: <MarkPage type={MessageTypes.comment} /> },
                 ],
             },
             {
                 path: 'picture',
                 element: <Outlet />,
                 children: [
-                    { path: 'view', element: <ViewPage type={"picture"} /> },
-                    { path: 'mark', element: <MarkPage type={"picture"} /> },
+                    { path: 'view', element: <ViewPage type={MessageTypes.picture} /> },
+                    { path: 'mark', element: <MarkPage type={MessageTypes.picture} /> },
                 ],
             },
             { path: "admin", element: <AdminPage /> }
