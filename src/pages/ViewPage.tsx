@@ -2,16 +2,17 @@ import React, { useEffect, useState } from 'react';
 
 
 export interface IViewPageProps {
-
+    type?: "post" | "comment" | "picture"
 }
 
 const ViewPage: React.FunctionComponent<IViewPageProps> = (props) => {
+    const {type} = props;
     useEffect(() => {
 
     }, []);
     return (
         <div>
-           <p>View Page 2</p>
+           <p>View Page {type}</p>
         </div>
     )
 }

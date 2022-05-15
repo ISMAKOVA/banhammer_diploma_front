@@ -1,0 +1,38 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import "src/components/components";
+
+$pink: rgba(248, 164, 216, 1);
+$purple: rgba(108, 99,  255,1);
+
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  color: $text-slate-700;
+  height: 100%;
+  background: url("./assets/bg-image-3.png") no-repeat;
+  background-size: cover;
+  //background-color: $pink;
+}
+
+.glass-bg {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  opacity: .4;
+  width: 100%;
+  height: 100%;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
