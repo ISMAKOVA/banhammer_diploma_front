@@ -1,15 +1,18 @@
-import {Navigate, Outlet, useRoutes} from 'react-router-dom';
+import {Navigate, Outlet, useNavigate, useRoutes} from 'react-router-dom';
 import MainPage from "../../pages/MainPage";
 import ViewPage from "../../pages/ViewPage";
 import MarkPage from "../../pages/MarkPage";
 import AdminPage from "../../pages/AdminPage";
 import UnauthorisedPage from "../../pages/UnauthorisedPage";
 import LoginPage from "../../pages/LoginPage";
-import React, {useEffect, useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import {getAuth, onAuthStateChanged} from "firebase/auth";
 import {MessageTypes} from "../../utils/enums";
+import AboutUsPage from "../../pages/AboutUsPage";
+import {UserRoles} from "../../utils/roles";
+// import {AuthContext, AuthContextProvider} from "../../services/firebase";
 
-const routes = (isLoggedIn: boolean) => [
+const routes = (isLoggedIn: boolean, userRole: UserRoles) => [
     {
         path: '/',
         element: isLoggedIn ? <Outlet /> : <Navigate to="/login" />,
@@ -42,6 +45,7 @@ const routes = (isLoggedIn: boolean) => [
         ],
     },
     { path: '/main', element: <MainPage /> },
+    { path: '/about', element: <AboutUsPage /> },
     { path: '/login', element: <LoginPage /> },
     { path: '/*', element:  isLoggedIn ? <Navigate to="/main" />  : <Navigate to="/login" /> },
 
@@ -49,17 +53,21 @@ const routes = (isLoggedIn: boolean) => [
 
 const AppRouter: React.FunctionComponent = () => {
     const auth = getAuth();
+    const userRole = UserRoles.expert;
     const [isLoggedIn, setIsLoggedIn] = useState(true);
-    const routing = useRoutes(routes(isLoggedIn));
+    const navigate = useNavigate();
+    const routing = useRoutes(routes(isLoggedIn, userRole));
     // useEffect(() => {
-    //     AuthCheck();
-    // }, [auth]);
+    //     const AuthCheck = onAuthStateChanged(auth, (user) => {
+    //         if (user) {
+    //             setIsLoggedIn(true);
+    //         } else {
+    //             setIsLoggedIn(false);
+    //         }
+    //     });
     //
-    // const AuthCheck =  onAuthStateChanged(auth, (user)=> {
-    //     if (user) {
-    //         setIsLoggedIn(true);
-    //     }
-    // });
+    //     return () => AuthCheck();
+    // }, [auth]);
 
     return (<>{routing}</>);
 

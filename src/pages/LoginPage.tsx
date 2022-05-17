@@ -8,7 +8,7 @@ export interface ILoginPageProps {
 
 const LoginPage: React.FunctionComponent<ILoginPageProps> = (props) => {
     const auth = getAuth();
-    const navigate  = useNavigate();
+    const navigate = useNavigate();
     const [authing, setAuthing] = useState(false);
 
     const signInWithGoogle = async () => {
@@ -24,10 +24,19 @@ const LoginPage: React.FunctionComponent<ILoginPageProps> = (props) => {
                 setAuthing(false);
             })
     }
+
+    const signOut = async () => {
+        auth.signOut();
+    }
     return (
-        <div>
-            Login
-            <button onClick={signInWithGoogle} disabled={authing}>Sign in With Google</button>
+        <div className="flex justify-center items-center h-screen">
+            <button className="bg-my-purple hover:opacity-80 shadow-2xl rounded-2xl py-2 px-4 text-my-white"
+                    onClick={signInWithGoogle}
+                    disabled={authing}>Войти с помощью Google</button>
+
+            {/*<button className="bg-my-purple hover:opacity-80 shadow-2xl rounded-2xl py-2 px-4 text-my-white"*/}
+            {/*        onClick={signOut}*/}
+            {/*        disabled={authing}>Выйти</button>*/}
         </div>
     )
 }

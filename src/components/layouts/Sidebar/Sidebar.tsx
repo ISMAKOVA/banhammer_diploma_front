@@ -9,6 +9,7 @@ import {LogOut} from '@styled-icons/ionicons-outline/LogOut';
 import {LogIn} from '@styled-icons/ionicons-outline/LogIn';
 import {Eye} from '@styled-icons/ionicons-outline/Eye';
 import {List} from '@styled-icons/ionicons-outline/List';
+import {People} from '@styled-icons/ionicons-outline/People';
 import {Link, Navigate, useMatch, useResolvedPath} from 'react-router-dom';
 
 export interface ISideMenuProps {
@@ -61,7 +62,7 @@ const Sidebar: React.FunctionComponent<ISideMenuProps> = (props) => {
                         <ReactRouterMenuItem icon={<Eye size="20"/>} to="picture/view">Таблица</ReactRouterMenuItem>
                         <ReactRouterMenuItem icon={<List size="20"/>} to="picture/mark">Разметить</ReactRouterMenuItem>
                     </SubMenu>
-
+                    <ReactRouterMenuItem icon={<People size="20"/>} to="/about">О нас</ReactRouterMenuItem>
                 </Menu>
                 <Menu iconShape="square">
                     <ReactRouterMenuItem to="/login" icon={<LogOut size="20"/>}>Выйти</ReactRouterMenuItem>

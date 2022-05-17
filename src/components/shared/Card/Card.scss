@@ -14,13 +14,3 @@ $purple: rgba(108, 99,  255, 0.1);
   box-shadow: 0 35px 68px 0 $purple, inset 0 -8px 16px 0 $pink;
 
 }
-.template-card {
-  border-radius: 16px;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(11px);
-  -webkit-backdrop-filter: blur(11px);
-  border: 1px solid rgba(255, 255, 255, 0.33);
-  &.color{
-    background: rgba(207, 196, 241, 1);
-  }
-}

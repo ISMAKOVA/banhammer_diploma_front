@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
 
-const NotFoundPage: React.FunctionComponent = (props) => {
+const AboutUsPage: React.FunctionComponent = (props) => {
     useEffect(() => {
 
     }, []);
     return (
         <div>
-            <p>NotFound Page</p>
+            <p>О нас</p>
         </div>
     )
 }
 
-export default NotFoundPage;
+export default AboutUsPage;

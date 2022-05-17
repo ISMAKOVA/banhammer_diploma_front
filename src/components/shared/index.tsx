@@ -1,6 +1,6 @@
-import Button from './Button';
 import Dropdown from './Dropdown';
 import Radiobutton from './Radiobutton';
 import Card from './Card';
+import Table from './Table';
 
-export default {Button, Dropdown, Radiobutton, Card};
+export default { Dropdown, Radiobutton, Card, Table};
