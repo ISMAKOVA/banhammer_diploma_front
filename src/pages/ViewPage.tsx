@@ -23,7 +23,7 @@ const ViewPage: React.FunctionComponent<IViewPageProps> = (props) => {
     }
     return (
         <div>
-            <h1 className="text-2xl pb-10 ml-4 font-semibold">Таблица {getTitle(type)}</h1>
+            <h1 className="text-2xl pb-10 ml-4">Таблица {getTitle(type)}</h1>
             <Table/>
         </div>
     )

@@ -15,39 +15,39 @@ const MarkPage: React.FunctionComponent<IMarkPageProps> = (props) => {
     }, []);
 
     const cards = [
-        // {
-        //     id: 0,
-        //     text: "Илья, *душнила ON* это были не свиньи, а Труляля и Траляля - персонажи Алисы в стране чудес *душнила OFF*",
-        //     img: require("../assets/mem1.png")
-        // },
-        // {
-        //     id: 1,
-        //     text: " Выйдет вторая часть. Также можно найти официальный трейлер этой игре. Несмотря на то, что компания " +
-        //         "распалась, другая студия взялась за эту игру. Конечно там участвовали те, которые работали на первой части. ",
-        //     img: require("../assets/mem2.png")
-        // },
-        // {
-        //     id: 2,
-        //     text: "Мне нравится этот стиль, похоже на скан какой-то манги из 80-90-хх годов. Историей прям таки веет.",
-        //     img: require("../assets/mem3.png")
-        // },
-        // {
-        //     id: 3,
-        //     text: "давай будем друзьями, ну конечно ...давай\n" +
-        //         "ты будешь меня кушать, я не буду возражать",
-        //     img: require("../assets/mem4.png")
-        // },
-        // {
-        //     id: 4,
-        //     text: "Воу!\n" +
-        //         "Волшебно!",
-        //     img: require("../assets/mem5.png")
-        // },
-        // {
-        //     id: 5,
-        //     text: "София, о хоть кто-то ещё помнит the wolf among us",
-        //     img: require("../assets/mem6.png")
-        // },
+        {
+            id: 0,
+            text: "Илья, *душнила ON* это были не свиньи, а Труляля и Траляля - персонажи Алисы в стране чудес *душнила OFF*",
+            img: require("../assets/mem1.png")
+        },
+        {
+            id: 1,
+            text: " Выйдет вторая часть. Также можно найти официальный трейлер этой игре. Несмотря на то, что компания " +
+                "распалась, другая студия взялась за эту игру. Конечно там участвовали те, которые работали на первой части. ",
+            img: require("../assets/mem2.png")
+        },
+        {
+            id: 2,
+            text: "Мне нравится этот стиль, похоже на скан какой-то манги из 80-90-хх годов. Историей прям таки веет.",
+            img: require("../assets/mem3.png")
+        },
+        {
+            id: 3,
+            text: "давай будем друзьями, ну конечно ...давай\n" +
+                "ты будешь меня кушать, я не буду возражать",
+            img: require("../assets/mem4.png")
+        },
+        {
+            id: 4,
+            text: "Воу!\n" +
+                "Волшебно!",
+            img: require("../assets/mem5.png")
+        },
+        {
+            id: 5,
+            text: "София, о хоть кто-то ещё помнит the wolf among us",
+            img: require("../assets/mem6.png")
+        },
         {
             id: 6,
             text: "Тренды UX/UI дизайна в 2022 году.\n До сих пор остается популярным стиль glassmorphism, который был впервые широко представлен в 2013 году с релизом iOS 7...",
@@ -79,7 +79,7 @@ const MarkPage: React.FunctionComponent<IMarkPageProps> = (props) => {
     return (
         <div className="flex flex-col">
             <div className="">
-                <h1 className="text-2xl pb-10 ml-4 font-semibold">Разметка {getTitle(type)}</h1>
+                <h1 className="text-2xl pb-10 ml-4">Разметка {getTitle(type)}</h1>
                 <div className="flex flex-row space-x-8 mb-6 ml-4">
                     <div>
                         <h3 className="text-sm text-slate-700 pl-2.5 pb-1">Количество для показа</h3>

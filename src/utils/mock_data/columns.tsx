@@ -50,5 +50,9 @@ export const COLUMNS = [
     {
         Header : 'Пропуск',
         accessor : 'skip'
+    },
+    {
+        Header : 'Вычисленные метки',
+        accessor : 'computed_mark'
     }
 ];

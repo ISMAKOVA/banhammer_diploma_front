@@ -6,27 +6,37 @@
 $pink: rgba(248, 164, 216, 1);
 $purple: rgba(108, 99,  255,1);
 
+$pink-opacity: rgba(248, 164, 216, 0.7);
+$purple-opacity: rgba(108, 99,  255, 0.7);
 
 body {
   font-family: 'Open Sans', sans-serif;
+  font-weight: lighter;
   color: $text-slate-700;
   height: 100%;
-  background: url("./assets/bg-image-3.png") no-repeat;
+  background: url("./assets/bg-image-4.png") no-repeat;
   background-size: cover;
   //background-color: $pink;
 }
 
 .glass-bg {
-  position: absolute;
-  z-index: -1;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  opacity: .4;
-  width: 100%;
-  height: 100%;
+  -webkit-backdrop-filter: blur(11px);
+  border: 1px solid rgba(255, 255, 255, 0.33);
+
+  backdrop-filter: blur(15px);
+  background: rgba(255,255,255, 0.4);
 }
+
+.glass-circle {
+  border-radius: 50%;
+  -webkit-backdrop-filter: blur(11px);
+  border: 3px solid $purple-opacity;
+  color: $purple;
+  background: rgba(255,255,255, 0);
+
+  box-shadow: 0 35px 68px 0 rgba(108, 99,  255, 0.07), inset 0 -8px 16px 0 rgba(108, 99,  255, 0.07);
+}
+
 
 .no-scrollbar::-webkit-scrollbar {
   display: none;
