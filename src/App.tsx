@@ -3,21 +3,18 @@ import {BrowserRouter, useLocation, useNavigate, useRoutes} from "react-router-d
 //import AppRouter from "./components/app-router";
 import AppRouter from "./components/appRouter";
 import Layout from "./components/layouts/Layout/Layout";
-import {initializeApp} from "firebase/app";
-import {firebaseConfig} from "./services/firebase";
-import {getAuth, onAuthStateChanged} from "firebase/auth";
-
-initializeApp(firebaseConfig);
-
+import {AuthContextProvider} from "./utils/context/AuthContext";
 const App: React.FC = (props) => {
 
     return(
+        <AuthContextProvider>
         <BrowserRouter>
             <Layout>
                 <AppRouter />
                 {/*<AppRouter />*/}
             </Layout>
         </BrowserRouter>
+        </AuthContextProvider>
     );
 };
 

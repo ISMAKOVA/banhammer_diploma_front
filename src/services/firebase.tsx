@@ -13,20 +13,6 @@ export const firebaseConfig = {
     measurementId: process.env.REACT_APP_MEASUREMENT_ID
 };
 
-// export const auth = getAuth();
-// export const AuthContext = createContext< | null>(null);
-// interface IAuthContextProvider {
-//     children?: React.ReactNode;
-// }
-// export const AuthContextProvider: React.FC<IAuthContextProvider> = ({ children }) => {
-//     const [user, setUser] = useState<firebase.User | null>(null);
-//
-//     useEffect(() => {
-//         return auth.onAuthStateChanged((firebaseUser) => {
-//             setUser(firebaseUser);
-//         });
-//     }, []);
-//
-//     return <AuthContext.Provider value={user}>{children}</AuthContext.Provider>;
-// }
+const app = initializeApp(firebaseConfig);
+export const auth = getAuth(app);
 

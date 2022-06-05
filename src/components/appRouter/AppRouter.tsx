@@ -10,6 +10,8 @@ import {getAuth, onAuthStateChanged} from "firebase/auth";
 import {MessageTypes} from "../../utils/enums";
 import AboutUsPage from "../../pages/AboutUsPage";
 import {UserRoles} from "../../utils/roles";
+import AddPage from "../../pages/AddPage";
+import EditPage from "../../pages/EditPage";
 // import {AuthContext, AuthContextProvider} from "../../services/firebase";
 
 const routes = (isLoggedIn: boolean, userRole: UserRoles) => [
@@ -23,6 +25,8 @@ const routes = (isLoggedIn: boolean, userRole: UserRoles) => [
                 children: [
                     { path: 'view', element: <ViewPage type={MessageTypes.post} /> },
                     { path: 'mark', element: <MarkPage type={MessageTypes.post} /> },
+                    { path: 'add', element: <AddPage type={MessageTypes.post} /> },
+                    { path: 'edit/:id', element: <EditPage type={MessageTypes.post} /> },
                 ],
             },
             {

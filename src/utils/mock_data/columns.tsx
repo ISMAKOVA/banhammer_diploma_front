@@ -24,35 +24,51 @@ export const COLUMNS = [
         accessor : 'is_toxic'
     },
     {
+        Header : 'Токсично (вычислено)',
+        accessor : 'is_toxic_computed'
+    },
+    {
         Header : 'Токсично (пол)',
         accessor : 'is_toxic_sexist'
+    },
+    {
+        Header : 'Токсично (пол, вычислено)',
+        accessor : 'is_toxic_sexist_computed'
     },
     {
         Header : 'Токсично (личность)',
         accessor : 'is_toxic_to_person'
     },
     {
+        Header : 'Токсично (личность, вычислено)',
+        accessor : 'is_toxic_to_person_computed'
+    },
+    {
         Header : 'Токсично (группа)',
         accessor : 'is_toxic_to_group'
+    },
+    {
+        Header : 'Токсично (группа, вычислено)',
+        accessor : 'is_toxic_to_group_computed'
     },
     {
         Header : 'Негативно',
         accessor : 'is_negative'
     },
-    {
-        Header : 'Позитивно',
-        accessor : 'is_positive'
-    },
+    // {
+    //     Header : 'Позитивно',
+    //     accessor : 'is_positive'
+    // },
     {
         Header : 'Нейтрально',
         accessor : 'is_neutral'
     },
-    {
-        Header : 'Пропуск',
-        accessor : 'skip'
-    },
-    {
-        Header : 'Вычисленные метки',
-        accessor : 'computed_mark'
-    }
+    // {
+    //     Header : 'Пропуск',
+    //     accessor : 'skip'
+    // },
+    // {
+    //     Header : 'Вычисленные метки',
+    //     accessor : 'computed_mark'
+    // }
 ];
