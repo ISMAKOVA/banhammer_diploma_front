@@ -16,7 +16,7 @@ const LoginPage: React.FunctionComponent<any> = (props) => {
 
     useEffect(()=>{
         if (user != null) {
-            navigate("/");
+            navigate("/main");
         }
         else{
             navigate("/login");

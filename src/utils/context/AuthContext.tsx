@@ -6,6 +6,7 @@ import {
   onAuthStateChanged
 } from "firebase/auth";
 import {auth} from "../../services/firebase";
+import {UserRoles} from "../roles";
 
 interface IAuthContextProvider {
     children?: React.ReactNode;
@@ -44,4 +45,7 @@ export const AuthContextProvider: React.FC <IAuthContextProvider>= ({children}) 
 
 export const UserAuth = () => {
   return useContext(AuthContext);
+}
+export const getUserRole = (user: any) => {
+  return UserRoles.expert;
 }

@@ -3,16 +3,14 @@ import MainPage from "../../pages/MainPage";
 import ViewPage from "../../pages/ViewPage";
 import MarkPage from "../../pages/MarkPage";
 import AdminPage from "../../pages/AdminPage";
-import UnauthorisedPage from "../../pages/UnauthorisedPage";
 import LoginPage from "../../pages/LoginPage";
-import React, {useContext, useEffect, useState} from "react";
-import {getAuth, onAuthStateChanged} from "firebase/auth";
+import React, {useEffect, useState} from "react";
 import {MessageTypes} from "../../utils/enums";
 import AboutUsPage from "../../pages/AboutUsPage";
 import {UserRoles} from "../../utils/roles";
 import AddPage from "../../pages/AddPage";
 import EditPage from "../../pages/EditPage";
-// import {AuthContext, AuthContextProvider} from "../../services/firebase";
+import {getUserRole, UserAuth} from "../../utils/context/AuthContext";
 
 const routes = (isLoggedIn: boolean, userRole: UserRoles) => [
     {
@@ -25,8 +23,8 @@ const routes = (isLoggedIn: boolean, userRole: UserRoles) => [
                 children: [
                     { path: 'view', element: <ViewPage type={MessageTypes.post} /> },
                     { path: 'mark', element: <MarkPage type={MessageTypes.post} /> },
-                    { path: 'add', element: <AddPage type={MessageTypes.post} /> },
-                    { path: 'edit/:id', element: <EditPage type={MessageTypes.post} /> },
+                    { path: 'add', element: userRole !== UserRoles.expert ? <AddPage type={MessageTypes.post} /> : <Navigate to="/main" /> },
+                    { path: 'edit/:id', element: userRole !== UserRoles.expert ? <EditPage type={MessageTypes.post} /> : <Navigate to="/main" /> },
                 ],
             },
             {
@@ -35,6 +33,8 @@ const routes = (isLoggedIn: boolean, userRole: UserRoles) => [
                 children: [
                     { path: 'view', element: <ViewPage type={MessageTypes.comment} /> },
                     { path: 'mark', element: <MarkPage type={MessageTypes.comment} /> },
+                    { path: 'add', element: userRole !== UserRoles.expert ? <AddPage type={MessageTypes.post} /> : <Navigate to="/main" /> },
+                    { path: 'edit/:id', element: userRole !== UserRoles.expert ? <EditPage type={MessageTypes.post} /> : <Navigate to="/main" /> },
                 ],
             },
             {
@@ -43,6 +43,8 @@ const routes = (isLoggedIn: boolean, userRole: UserRoles) => [
                 children: [
                     { path: 'view', element: <ViewPage type={MessageTypes.picture} /> },
                     { path: 'mark', element: <MarkPage type={MessageTypes.picture} /> },
+                    { path: 'add', element: userRole !== UserRoles.expert ? <AddPage type={MessageTypes.post} /> : <Navigate to="/main" /> },
+                    { path: 'edit/:id', element: userRole !== UserRoles.expert ? <EditPage type={MessageTypes.post} /> : <Navigate to="/main" /> },
                 ],
             },
             { path: "admin", element: <AdminPage /> }
@@ -56,23 +58,15 @@ const routes = (isLoggedIn: boolean, userRole: UserRoles) => [
 ];
 
 const AppRouter: React.FunctionComponent = () => {
-    const auth = getAuth();
-    const userRole = UserRoles.expert;
-    const [isLoggedIn, setIsLoggedIn] = useState(true);
-    const navigate = useNavigate();
+    const {user} = UserAuth();
+    const userRole = getUserRole(user);
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
     const routing = useRoutes(routes(isLoggedIn, userRole));
-    // useEffect(() => {
-    //     const AuthCheck = onAuthStateChanged(auth, (user) => {
-    //         if (user) {
-    //             setIsLoggedIn(true);
-    //         } else {
-    //             setIsLoggedIn(false);
-    //         }
-    //     });
-    //
-    //     return () => AuthCheck();
-    // }, [auth]);
-
+    useEffect(() => {
+        user?.displayName
+            ? setIsLoggedIn(true)
+            : setIsLoggedIn(false)
+    }, [user]);
     return (<>{routing}</>);
 
 }

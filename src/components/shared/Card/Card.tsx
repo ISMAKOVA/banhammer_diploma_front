@@ -8,10 +8,11 @@ export interface ICard {
     picture?: string
     onclick?: void
     text?: string
+    isCorrect?: boolean
 }
 
 const Card: React.FC<ICard> = (props) => {
-    const {type, picture, title, text} = props;
+    const {type, picture, title, text, isCorrect} = props;
     const is_toxic_sexist = "is_toxic_sexist";
     const is_toxic_to_group = "is_toxic_to_group";
     const is_toxic_to_person = "is_toxic_to_person";
@@ -86,7 +87,7 @@ const Card: React.FC<ICard> = (props) => {
     }
 
     return (
-        <div className={"card h-auto p-6 space-y-4 card-mark m-4 " + (type === MessageTypes.post ? "w-[50rem]" : "w-80")}>
+        <div className={"card h-auto p-6 space-y-4 card-mark m-4 " + (type === MessageTypes.post ? "w-[50rem]" : "w-80") + (isCorrect? "" : " wrong") }>
             <div className="text-slate-700 font-semibold text-xl transition hover:text-cyan-300 ">
                 Поставте отметку {getTitle(type)}
             </div>
@@ -106,7 +107,7 @@ const Card: React.FC<ICard> = (props) => {
                         {
                             marks.filter(mark => mark.group !== is_toxic_sexist && mark.group !== is_toxic_to_group)
                                 .map((mark, i) =>
-                                    <Radiobutton id={i.toString()} label={mark.label} name={mark.group}/>
+                                    <Radiobutton id={i.toString()} label={mark.label} name={i.toString()}/>
                                 )
                         }
                     </div>
